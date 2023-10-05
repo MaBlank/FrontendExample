@@ -1,7 +1,42 @@
+<!-- dashboard.component.html -->
 <h1>Dashboard</h1>
-<div class="card">
+
+<div class="card-container">
+  <!-- First card -->
+  <div class="card">
     <div class="card-head">Lorem ipsum - dashboard</div>
     <div class="card-body">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas ducimus soluta, quasi aut ipsa non, ullam enim rem repudiandae, vitae provident animi. Inventore rerum, voluptas optio dignissimos blanditiis modi illo!
+      <!-- Add this line for a progress spinner -->
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas ducimus soluta, quasi aut ipsa non, ullam enim rem repudiandae, vitae provident animi. Inventore rerum, voluptas optio dignissimos blanditiis modi illo!
     </div>
+    <mat-slider>
+      <input matSliderThumb>
+    </mat-slider>
+  </div>
+
+  <!-- Second card (duplicate) -->
+  <div class="card">
+    <div class="card-head">Lorem ipsum - dashboard</div>
+    <div class="card-body">
+      <!-- Add this line for a progress spinner -->
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas ducimus soluta, quasi aut ipsa non, ullam enim rem repudiandae, vitae provident animi. Inventore rerum, voluptas optio dignissimos blanditiis modi illo!
+    </div>
+    <mat-slider>
+      <input matSliderThumb>
+    </mat-slider>
+  </div>
+</div>
+
+<div>
+  <button mat-button>Click me!</button>
+</div>
+
+<h3>Basic Buttons</h3>
+<div class="example-button-row">
+  <button mat-button>Basic</button>
+  <button mat-button color="primary">Primary</button>
+  <button mat-button color="accent">Accent</button>
+  <button mat-button color="warn">Warn</button>
+  <button mat-button disabled>Disabled</button>
+  <a mat-button routerLink=".">Link</a>
 </div>

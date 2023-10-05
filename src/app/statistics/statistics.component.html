@@ -1,1 +1,9 @@
 <h1>Statistics</h1>
+<div></div>
+<mat-form-field appearance="fill">
+  <mat-label>Enter an integer</mat-label>
+  <input matInput [formControl]="integerControl" placeholder="Integer">
+  <mat-error *ngIf="integerControl.hasError('invalidInteger')">
+    Only integers are allowed
+  </mat-error>
+</mat-form-field>
