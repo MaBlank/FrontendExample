@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 function demo(number1: number, number12: number) {
   return 0;
@@ -24,5 +25,19 @@ export class SettingsComponent implements OnInit {
   demo(a: number, b: number): number {
     return a * b;
   }
+  title = 'mdf';
 
+  contactForm = new FormGroup({
+    firstname: new FormControl(),
+    lastname: new FormControl(),
+    email: new FormControl(),
+    gender: new FormControl(),
+    isMarried: new FormControl(),
+    country: new FormControl()
+  })
+
+
+  onSubmit() {
+    console.log(this.contactForm.value);
+  }
 }

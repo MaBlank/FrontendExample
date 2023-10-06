@@ -17,7 +17,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {HttpClientModule} from "@angular/common/http";
-import { FormatDatePipe } from './format-date.pipe';
+import { FormatDatePipe } from './products/format-date.pipe';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSelectModule} from "@angular/material/select";
+import {MatListModule} from "@angular/material/list";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -43,7 +48,12 @@ import { FormatDatePipe } from './format-date.pipe';
     MatFormFieldModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

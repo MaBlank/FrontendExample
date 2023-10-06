@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from '../apiservice.service';
+import { ApiServiceService } from './apiservice.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,7 @@ import { ApiServiceService } from '../apiservice.service';
 export class ProductsComponent implements OnInit {
   jokeData: ChuckNorrisJoke | undefined;
 
-  constructor(private chuckNorrisService: ApiServiceService) { }
+  constructor(private chuckNorrisService: ApiServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.chuckNorrisService.getRandomJoke().subscribe(data => {
@@ -23,5 +24,9 @@ export class ProductsComponent implements OnInit {
 
   get date(): string | undefined {
     return this.jokeData?.created_at;
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 }
