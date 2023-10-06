@@ -17,6 +17,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {HttpClientModule} from "@angular/common/http";
+import { FormatDatePipe } from './format-date.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from "@angular/common/http";
     SidenavComponent,
     ProductsComponent,
     StatisticsComponent,
-    SettingsComponent
+    SettingsComponent,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,
