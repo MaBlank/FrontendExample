@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgChartsModule } from 'ng2-charts';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -39,6 +40,7 @@ import {RouterModule} from "@angular/router";
   ],
   imports: [
     BrowserModule,
+    NgChartsModule,
     CommonModule,
     NgIf,
     DashboardComponent,
