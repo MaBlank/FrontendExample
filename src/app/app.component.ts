@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 interface SideNavToggle {
   screenWidth: number;
@@ -11,7 +12,10 @@ interface SideNavToggle {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'sidenav';
+  title = 'Testanwendung';
+  constructor(private titleService: Title) {
+    this.titleService.setTitle(this.title);
+  }
 
   isSideNavCollapsed = false;
   screenWidth = 0;
