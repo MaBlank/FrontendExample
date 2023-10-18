@@ -23,6 +23,7 @@ interface Food {
 })
 export class DashboardComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  ponyName: string = "Matthias";
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},

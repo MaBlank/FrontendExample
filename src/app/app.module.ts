@@ -24,7 +24,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgIf} from "@angular/common";
 import {RouterModule} from "@angular/router";
 
 @NgModule({
@@ -39,6 +39,8 @@ import {RouterModule} from "@angular/router";
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    NgIf,
     DashboardComponent,
     BrowserAnimationsModule,
     PagesComponent,
