@@ -23,6 +23,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
+import {MatDialogModule} from "@angular/material/dialog";
+import {CommonModule} from "@angular/common";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -53,7 +56,11 @@ import {MatCardModule} from "@angular/material/card";
     MatSelectModule,
     MatListModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatSelectModule,
+    CommonModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

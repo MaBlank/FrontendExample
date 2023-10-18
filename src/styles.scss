@@ -7,12 +7,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+.grey-line {
+  border: 0;             /* Remove default border */
+  border-top: 1px solid grey;  /* Add a top border */
+  width: 100%;          /* Make it span the full width */
+  margin: 10px 0;       /* Add some vertical spacing */
+}
 
 body {
   position: relative;
   font-family: 'Roboto', sans-serif;
 }
-
+.example-form .mat-form-field-flex,
+.example-form .mat-select-value {
+  background-color: white !important;
+}
 .card {
   display: flex;
   flex-direction: column;
