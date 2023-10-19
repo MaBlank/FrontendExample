@@ -8,7 +8,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { CoupensComponent } from './coupens/coupens.component';
+import { CouponsComponent } from './coupens/coupons.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -24,8 +24,9 @@ import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgIf} from "@angular/common";
 import {RouterModule} from "@angular/router";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -34,17 +35,23 @@ import {RouterModule} from "@angular/router";
     SidenavComponent,
     ProductsComponent,
     StatisticsComponent,
+    CouponsComponent,
     SettingsComponent,
-    FormatDatePipe
-  ],
+    FormatDatePipe],
   imports: [
     BrowserModule,
+    CommonModule,
+    CommonModule,
+    NgIf,
     DashboardComponent,
     BrowserAnimationsModule,
     PagesComponent,
+    MatTableModule,
     AppRoutingModule,
     MediaComponent,
-    CoupensComponent,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatInputModule,

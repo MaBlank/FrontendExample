@@ -33,6 +33,7 @@
     "@angular/cli": "~16.2.6",
     "@angular/compiler-cli": "^16.2.9",
     "@cypress/schematic": "^2.5.1",
+    "@types/d3": "^7.4.2",
     "@types/d3-scale": "^4.0.5",
     "@types/d3-selection": "^3.0.7",
     "@types/d3-shape": "^3.1.3",
