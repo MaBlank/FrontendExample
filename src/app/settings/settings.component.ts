@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-
-function demo(number1: number, number12: number) {
-  return 0;
-}
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ContactFormModel } from './contact-form-model'; // Pfad anpassen
 
 @Component({
   selector: 'app-settings',
@@ -11,33 +8,52 @@ function demo(number1: number, number12: number) {
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
-  constructor() {
-    this.filteredList = this.stringList.filter(str => str.includes('2'));
-    let number = demo(10, 210);
-  }
-  message: string = 'Hallo Welt!';
-  stringList: string[] = ['String 1', 'String 2', 'String 3', 'String 4'];
-  filteredList: string[] = [];
-  number: number = 10;
-  ngOnInit(): void {
-  }
-  demo(a: number, b: number): number {
-    return a * b;
-  }
-  title = 'mdf';
-
+  showConfirmation = false;
+  showValidationErrors = false;
   contactForm = new FormGroup({
-    firstname: new FormControl(),
-    lastname: new FormControl(),
-    email: new FormControl(),
-    gender: new FormControl(),
-    isMarried: new FormControl(),
-    country: new FormControl()
-  })
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required]),
+    isMarried: new FormControl(false),
+    country: new FormControl('', Validators.required)
+  });
 
+  constructor() {}
+
+  ngOnInit(): void {}
 
   onSubmit() {
-    console.log(this.contactForm.value);
+    this.showValidationErrors = true; // Validierungsfehler anzeigen, wenn Submit gedrückt wird
+    if (this.contactForm.valid) {
+      const formData: ContactFormModel = this.contactForm.getRawValue() as ContactFormModel;
+      this.saveFormData(formData);
+      this.showConfirmation = true;
+      setTimeout(() => {
+        this.showConfirmation = false;
+        this.resetForm();
+      }, 750);
+    }
+  }
+
+  resetForm() {
+    this.contactForm.reset();
+    setTimeout(() => {
+      Object.keys(this.contactForm.controls).forEach(key => {
+        const control = this.contactForm.get(key);
+        if (control) {
+          control.markAsPristine();
+        }
+        if (control) {
+          control.markAsUntouched();
+        }
+        if (control) {
+          control.setErrors(null);
+        }
+      });
+    });
+  }
+
+  private saveFormData(formData: ContactFormModel) {
+    console.log('Gespeicherte Daten:', formData);
   }
 }

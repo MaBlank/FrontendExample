@@ -1,53 +1,64 @@
-<h1>Settings</h1>
-<h2>{{message}}</h2>
-<h3>{{number}}</h3>
-
-<h1>String Liste</h1>
-<mat-list>
-  <mat-list-item *ngFor="let str of filteredList">{{ str }}</mat-list-item>
-</mat-list>
+<h1>Hinzufügen neuer Modelle</h1>
 
 <mat-card>
   <mat-card-content>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; gap: 16px;">
 
+      <!-- Vorname -->
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Name des Modells</mat-label>
         <input matInput type="text" formControlName="firstname">
+        <mat-error *ngIf="showValidationErrors && contactForm.get('firstname')?.errors?.['required']">
+          Vorname ist erforderlich.
+        </mat-error>
       </mat-form-field>
 
+      <!-- Nachname -->
       <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
+        <mat-label>API für den Zugriff</mat-label>
         <input matInput type="text" formControlName="lastname">
+        <mat-error *ngIf="showValidationErrors && contactForm.get('lastname')?.errors?.['required']">
+          Nachname ist erforderlich.
+        </mat-error>
       </mat-form-field>
 
+      <!-- E-Mail -->
       <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="text" formControlName="email">
+        <mat-label>Kurzbeschreibung</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-error *ngIf="showValidationErrors && contactForm.get('email')?.errors?.['required']">
+          Kurzbeschreibung erforderlich
+        </mat-error>
       </mat-form-field>
 
-      <div>
-        <mat-label>Gender</mat-label>
-        <mat-radio-group formControlName="gender">
-          <mat-radio-button value="male">Male</mat-radio-button>
-          <mat-radio-button value="female">Female</mat-radio-button>
-        </mat-radio-group>
-      </div>
+      <!-- Verheiratet Checkbox -->
+      <mat-checkbox formControlName="isMarried">Erstellt von Matthias Blank</mat-checkbox>
 
-      <mat-checkbox formControlName="isMarried">Married</mat-checkbox>
-
+      <!-- Land -->
       <mat-form-field appearance="fill">
-        <mat-label>Country</mat-label>
+        <mat-label>Land</mat-label>
         <mat-select formControlName="country">
-          <mat-option value="1">India</mat-option>
-          <mat-option value="2">USA</mat-option>
-          <mat-option value="3">England</mat-option>
-          <mat-option value="4">Singapore</mat-option>
+          <mat-option value="1">GPT (OpenAI)</mat-option>
+          <mat-option value="2">Spacy</mat-option>
+          <mat-option value="3">Huggingface Transformer</mat-option>
+          <mat-option value="4">Sonstige</mat-option>
         </mat-select>
+        <mat-error *ngIf="showValidationErrors && contactForm.get('country')?.errors?.['required']">
+          Land ist erforderlich.
+        </mat-error>
       </mat-form-field>
+
+      <!-- Submit Button -->
       <div style="align-self: flex-start;">
-        <button mat-raised-button type="submit">Submit</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Speichern</button>
       </div>
+
+      <!-- Bestätigungsnachricht -->
+      <div *ngIf="showConfirmation" class="confirmation-message">
+        Ihre Daten wurden erfolgreich gespeichert!
+      </div>
+
     </form>
   </mat-card-content>
 </mat-card>
+

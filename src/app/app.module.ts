@@ -27,6 +27,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {CommonModule, NgIf} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -41,8 +42,7 @@ import {MatTableModule} from "@angular/material/table";
   imports: [
     BrowserModule,
     CommonModule,
-    CommonModule,
-    NgIf,
+    MatButtonModule,
     DashboardComponent,
     BrowserAnimationsModule,
     PagesComponent,
@@ -66,7 +66,6 @@ import {MatTableModule} from "@angular/material/table";
     MatCardModule,
     MatDialogModule,
     MatSelectModule,
-    CommonModule,
     RouterModule
   ],
   providers: [],
