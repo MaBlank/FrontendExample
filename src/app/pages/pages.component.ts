@@ -17,7 +17,7 @@ export class PagesComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      description: ['', Validators.required],
       message: ['']
     });
   }

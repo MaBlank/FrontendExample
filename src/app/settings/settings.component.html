@@ -4,56 +4,37 @@
   <mat-card-content>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; gap: 16px;">
 
-      <!-- Vorname -->
       <mat-form-field appearance="fill">
         <mat-label>Name des Modells</mat-label>
-        <input matInput type="text" formControlName="firstname">
-        <mat-error *ngIf="showValidationErrors && contactForm.get('firstname')?.errors?.['required']">
-          Vorname ist erforderlich.
-        </mat-error>
+        <input matInput type="text" formControlName="name">
       </mat-form-field>
 
-      <!-- Nachname -->
       <mat-form-field appearance="fill">
         <mat-label>API für den Zugriff</mat-label>
-        <input matInput type="text" formControlName="lastname">
-        <mat-error *ngIf="showValidationErrors && contactForm.get('lastname')?.errors?.['required']">
-          Nachname ist erforderlich.
-        </mat-error>
+        <input matInput type="text" formControlName="api">
       </mat-form-field>
 
-      <!-- E-Mail -->
       <mat-form-field appearance="fill">
         <mat-label>Kurzbeschreibung</mat-label>
-        <input matInput type="email" formControlName="email">
-        <mat-error *ngIf="showValidationErrors && contactForm.get('email')?.errors?.['required']">
-          Kurzbeschreibung erforderlich
-        </mat-error>
+        <input matInput type="text" formControlName="description">
       </mat-form-field>
 
-      <!-- Verheiratet Checkbox -->
-      <mat-checkbox formControlName="isMarried">Erstellt von Matthias Blank</mat-checkbox>
+      <mat-checkbox formControlName="madebyMB">Erstellt von Matthias Blank</mat-checkbox>
 
-      <!-- Land -->
       <mat-form-field appearance="fill">
         <mat-label>Land</mat-label>
-        <mat-select formControlName="country">
+        <mat-select formControlName="model">
           <mat-option value="1">GPT (OpenAI)</mat-option>
           <mat-option value="2">Spacy</mat-option>
           <mat-option value="3">Huggingface Transformer</mat-option>
           <mat-option value="4">Sonstige</mat-option>
         </mat-select>
-        <mat-error *ngIf="showValidationErrors && contactForm.get('country')?.errors?.['required']">
-          Land ist erforderlich.
-        </mat-error>
       </mat-form-field>
 
-      <!-- Submit Button -->
       <div style="align-self: flex-start;">
         <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Speichern</button>
       </div>
 
-      <!-- Bestätigungsnachricht -->
       <div *ngIf="showConfirmation" class="confirmation-message">
         Ihre Daten wurden erfolgreich gespeichert!
       </div>
@@ -61,4 +42,3 @@
     </form>
   </mat-card-content>
 </mat-card>
-

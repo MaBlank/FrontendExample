@@ -22,7 +22,7 @@ interface Food {
   imports: [MatSliderModule, MatButtonModule, MatProgressSpinnerModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatOptionModule, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule, MatTooltipModule, MatRadioModule]
 })
 export class DashboardComponent implements OnInit {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  emailFormControl = new FormControl('', Validators.required);
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
