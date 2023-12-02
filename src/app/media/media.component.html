@@ -1,4 +1,4 @@
-<h1>Media</h1>
+<h1>Übersicht Modelle</h1>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 
@@ -38,47 +38,4 @@
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>
-</div>
-<div style="margin-top: 20px;">
-</div>
-<div>
-  <button mat-raised-button
-          matTooltip="By default, I delay"
-          aria-label="Button that displays a tooltip that has custom delays through a default config"
-  >
-    Button with delay-default tooltip
-  </button>
-  <button mat-raised-button
-          matTooltip="Info about the action"
-          aria-label="Button that displays a tooltip when focused or hovered over">
-    Action
-  </button>
-</div>
-<div style="margin-top: 20px;">
-</div>
-<div>
-  <mat-form-field>
-    <mat-label>Message</mat-label>
-    <input matInput value="Disco party!" #message>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Action</mat-label>
-    <input matInput value="Dance" #action>
-  </mat-form-field>
-
-  <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">
-    Show snack-bar
-  </button>
-</div>
-<div style="margin-top: 20px;">
-</div>
-<div>
-  <mat-list>
-    <mat-list-item>Item 1</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Item 2</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Item 3</mat-list-item>
-  </mat-list>
 </div>

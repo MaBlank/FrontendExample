@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ContactFormModel } from './contact-form-model'; // Pfad anpassen
+import { ContactFormModel } from './contact-form-model';
+import { ModelService } from './services/model.service';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  templateUrl: './addModel.component.html',
+  styleUrls: ['./addModel.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class AddModelComponent implements OnInit {
   showConfirmation = false;
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -17,22 +18,22 @@ export class SettingsComponent implements OnInit {
     model: new FormControl('', Validators.required)
   });
 
-  constructor() {}
-
   ngOnInit(): void {}
+
+  constructor(private modelService: ModelService) {}
 
   onSubmit() {
     if (this.contactForm.valid) {
       const formData: ContactFormModel = this.contactForm.getRawValue() as ContactFormModel;
-      this.saveFormData(formData);
-      this.showConfirmation = true;
-      setTimeout(() => {
-        window.location.reload();
-      }, 750);
+      this.modelService.saveModelData(formData).subscribe(response => {
+        console.log(response);
+        this.showConfirmation = true;
+        setTimeout(() => {
+          window.location.reload();
+        }, 750);
+      }, error => {
+        console.error('Error saving data:', error);
+      });
     }
-  }
-
-  private saveFormData(formData: ContactFormModel) {
-    console.log('Gespeicherte Daten:', formData);
   }
 }

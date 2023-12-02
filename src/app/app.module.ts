@@ -11,7 +11,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { CouponsComponent } from './coupens/coupons.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
-import { SettingsComponent } from './settings/settings.component';
+import { AddModelComponent } from './addModel/addModel.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
@@ -37,7 +37,7 @@ import {MatButtonModule} from "@angular/material/button";
     ProductsComponent,
     StatisticsComponent,
     CouponsComponent,
-    SettingsComponent,
+    AddModelComponent,
     FormatDatePipe],
   imports: [
     BrowserModule,
