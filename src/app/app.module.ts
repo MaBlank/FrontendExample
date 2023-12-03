@@ -13,7 +13,7 @@ import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { AddModelComponent } from './addModel/addModel.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {HttpClientModule} from "@angular/common/http";
@@ -24,10 +24,12 @@ import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
-import {CommonModule, NgIf} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
+import {NgxAnnotateTextModule} from "ngx-annotate-text";
+import { UniqueButtonPipe } from './unique-button.pipe';
 
 @NgModule({
   declarations: [
@@ -38,37 +40,37 @@ import {MatButtonModule} from "@angular/material/button";
     StatisticsComponent,
     CouponsComponent,
     AddModelComponent,
-    FormatDatePipe],
+    FormatDatePipe,
+    UniqueButtonPipe
+  ],
   imports: [
     BrowserModule,
+    DashboardComponent,
+    PagesComponent,
+    MediaComponent,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxChartsModule,
+    NgxAnnotateTextModule,
     CommonModule,
     MatButtonModule,
-    DashboardComponent,
-    BrowserAnimationsModule,
-    PagesComponent,
     MatTableModule,
-    AppRoutingModule,
-    MediaComponent,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatSelectModule,
-    HttpClientModule,
-    ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    NgxChartsModule,
     MatRadioModule,
     MatSelectModule,
     MatListModule,
-    MatCheckboxModule,
     MatCardModule,
-    MatDialogModule,
-    MatSelectModule,
-    RouterModule
+    MatDialogModule
   ],
   providers: [],
+  exports: [
+    UniqueButtonPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

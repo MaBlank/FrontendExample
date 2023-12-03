@@ -1,39 +1,64 @@
-<h1>Hinzufügen eines neuen Modells</h1>
+<h1>Annotieren</h1>
 
-<form class="example-form">
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Name des Modells</mat-label>
-      <input matInput>
-    </mat-form-field></td>
-  </tr></table>
+<mat-form-field>
+  <mat-label>Modellauswahl</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let model of models" [value]="model.name">
+      {{ model.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-  <p>
-    <mat-form-field class="example-full-width">
-      <mat-label>Address</mat-label>
-      <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Address 2</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field>
-  </p>
+<div class="row mt-5">
+  <div class="col-12">
+    <h1 class="mb-5 display-4">Annotationsservice</h1>
+    <hr>
+    <ngx-annotate-text
+      [(annotations)]="annotations"
+      [removable]="true"
+      [text]="mainObject.text"
+      annotationClass="my-annotation"
+      (clickAnnotation)="onClickAnnotation($event)"
+      (removeAnnotation)="onRemoveAnnotation($event)"
+      #annotateText
+    >
+    </ngx-annotate-text>
+    <hr>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-12">
+    <button
+      mat-button
+      *ngFor="let button of annotationButtons"
+      type="button"
+      [style.background-color]="button.color"
+      [style.min-width.px]="50"
+      (click)="addAnnotation(button.label, button.color)"
+      (contextmenu)="removeAnnotationButton(button.label, button.color, $event)"
+    >
+      {{ button.label }}
+    </button>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>City</mat-label>
-      <input matInput placeholder="Ex. San Francisco">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>State</mat-label>
-      <input matInput placeholder="Ex. California">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Postal Code</mat-label>
-      <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
-  </tr></table>
-  <button type="submit" class="submit-button">Absenden</button>
-</form>
+    <div class="input-group">
+      <input type="color" [(ngModel)]="newAnnotationColor" placeholder="Farbe" class="same-size">
+      <input type="text" [(ngModel)]="newAnnotationLabel" placeholder="Name" class="same-size">
+      <button
+        mat-button
+        class="same-size"
+        (click)="addAnnotation(newAnnotationLabel, newAnnotationColor)"
+      >
+        Annotation hinzufügen
+      </button>
 
+    </div>
+    <hr>
+    <button
+      type="button"
+      class="btn btn-outline-success same-size me-2 mt-2"
+      (click)="onSave()"
+    >
+      Save
+    </button>
+  </div>
+</div>

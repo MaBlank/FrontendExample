@@ -12,6 +12,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from "@angular/material/divider";
 import {FormsModule} from "@angular/forms";
+import {ContactFormModel} from "../addModel/contact-form-model";
+import {MatIconModule} from "@angular/material/icon";
+import {GetModelsService} from "./get-models.service";
 
 /** Custom options the configure the tooltip's default show/hide delays. */
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
@@ -25,36 +28,51 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   styleUrls: ['./media.component.scss'],
   providers: [{provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}],
   standalone: true,
-  imports: [MatListModule, MatDividerModule, MatTableModule, MatPaginatorModule, MatTooltipModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBarModule, MatListModule, FormsModule]
+  imports: [MatListModule, MatDividerModule, MatTableModule, MatPaginatorModule, MatTooltipModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBarModule, MatListModule, FormsModule, MatIconModule]
 })
 export class MediaComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['name', 'description', 'model', 'delete'];
+  dataSource = new MatTableDataSource<ContactFormModel>();
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(
+    private _snackBar: MatSnackBar,
+    private getModelsService: GetModelsService // Fügen Sie Ihren Service hier ein
+  ) {}
 
+  ngOnInit(): void {
+    this.getModelsService.getModels().subscribe(
+      data => {
+        this.dataSource.data = data; // Setzen Sie die Daten für Ihre Tabelle
+      },
+      error => {
+        console.error('There was an error retrieving the models', error);
+        this.openSnackBar('Fehler beim Laden der Modelle', 'Schließen');
+      }
+    );
+  }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
-    // @ts-ignore
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnInit(): void {
+  deleteModel(modelName: string, index: number) {
+    this.getModelsService.deleteModel(modelName).subscribe(
+      response => {
+        console.log(response);
+        // Entfernen Sie das Element aus der Datenquelle und aktualisieren Sie den Paginator
+        this.dataSource.data.splice(index, 1);
+        this.dataSource.paginator = this.paginator;
+      },
+      error => {
+        console.error('Error deleting model:', error);
+        this.openSnackBar('Fehler beim Löschen des Modells', 'Schließen');
+      }
+    );
   }
+
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-];
