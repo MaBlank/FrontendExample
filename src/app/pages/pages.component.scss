@@ -24,3 +24,14 @@
 .custom-btn:hover {
   opacity: 0.8; /* Makes button slightly transparent when hovered over */
 }
+
+.form-element {
+  width: 30%; /* Stellt sicher, dass das Element die volle Breite einnimmt */
+  margin-bottom: 8px; /* Fügt einen Abstand nach unten hinzu */
+}
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+

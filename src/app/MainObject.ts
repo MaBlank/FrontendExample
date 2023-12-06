@@ -1,6 +1,4 @@
 export interface MainObject {
-  guid: string;
-  name: string;
   text: string;
   annotations: Annotations;
 }

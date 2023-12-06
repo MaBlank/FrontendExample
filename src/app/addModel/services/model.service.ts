@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ModelService {
 
-  private apiUrl = 'http://localhost:5000/save_model'; // URL to your Flask API
+  private apiUrl = 'http://localhost:5000/save_model';
 
   constructor(private http: HttpClient) { }
 

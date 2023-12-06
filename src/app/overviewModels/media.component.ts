@@ -15,6 +15,8 @@ import {FormsModule} from "@angular/forms";
 import {ContactFormModel} from "../addModel/contact-form-model";
 import {MatIconModule} from "@angular/material/icon";
 import {GetModelsService} from "./get-models.service";
+import {ModelEditDialogComponent} from "../model-edit-dialog/model-edit-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 /** Custom options the configure the tooltip's default show/hide delays. */
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
@@ -35,8 +37,9 @@ export class MediaComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<ContactFormModel>();
 
   constructor(
+    public dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private getModelsService: GetModelsService // Fügen Sie Ihren Service hier ein
+    private getModelsService: GetModelsService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +66,6 @@ export class MediaComponent implements OnInit, AfterViewInit {
     this.getModelsService.deleteModel(modelName).subscribe(
       response => {
         console.log(response);
-        // Entfernen Sie das Element aus der Datenquelle und aktualisieren Sie den Paginator
         this.dataSource.data.splice(index, 1);
         this.dataSource.paginator = this.paginator;
       },
@@ -73,6 +75,25 @@ export class MediaComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  openDialog(element: ContactFormModel): void {
+    const dialogRef = this.dialog.open(ModelEditDialogComponent, {
+      width: '250px',
+      data: element
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Hier könnten Sie die aktualisierten Daten an Ihren Service senden, um sie zu speichern
+        console.log('Updated data:', result);
+        // Und hier die Tabelle aktualisieren
+        this.dataSource.data = this.dataSource.data.map((item) => {
+          if (item.name === result.name) {
+            return result;
+          }
+          return item;
+        });
+      }
+    });
+  }
 }
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CouponsComponent } from './coupens/coupons.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MediaComponent } from './media/media.component';
+import { MediaComponent } from './overviewModels/media.component';
 import { PagesComponent } from './pages/pages.component';
 import { ProductsComponent } from './products/products.component';
 import { AddModelComponent } from './addModel/addModel.component';

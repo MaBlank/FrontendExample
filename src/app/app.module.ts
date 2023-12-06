@@ -10,7 +10,7 @@ import { ProductsComponent } from './products/products.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CouponsComponent } from './coupens/coupons.component';
 import { PagesComponent } from './pages/pages.component';
-import { MediaComponent } from './media/media.component';
+import { MediaComponent } from './overviewModels/media.component';
 import { AddModelComponent } from './addModel/addModel.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -30,6 +30,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {NgxAnnotateTextModule} from "ngx-annotate-text";
 import { UniqueButtonPipe } from './unique-button.pipe';
+import { OneButtonPipe } from './pages/one-button.pipe';
+import { ModelEditDialogComponent } from './model-edit-dialog/model-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +43,16 @@ import { UniqueButtonPipe } from './unique-button.pipe';
     CouponsComponent,
     AddModelComponent,
     FormatDatePipe,
-    UniqueButtonPipe
+    ModelEditDialogComponent
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     DashboardComponent,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
     PagesComponent,
     MediaComponent,
     BrowserAnimationsModule,
@@ -69,7 +76,6 @@ import { UniqueButtonPipe } from './unique-button.pipe';
   ],
   providers: [],
   exports: [
-    UniqueButtonPipe
   ],
   bootstrap: [AppComponent]
 })

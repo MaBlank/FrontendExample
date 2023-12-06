@@ -1,8 +1,23 @@
 export const navbarData = [
     {
+        routeLink: 'settings',
+        icon: 'fa fa-cube',
+        label: 'Modell hinzufügen'
+    },
+    {
+        routeLink: 'media',
+        icon: 'fa fa-table',
+        label: 'Übersicht Modelle'
+    },
+    {
+        routeLink: 'pages',
+        icon: 'fa fa-pencil',
+        label: 'Annotationstest'
+    },
+    {
         routeLink: 'dashboard',
-        icon: 'fal fa-home',
-        label: 'Dashboard'
+        icon: 'fa fa-signal',
+        label: 'Bewertung'
     },
     {
         routeLink: 'products',
@@ -18,20 +33,5 @@ export const navbarData = [
         routeLink: 'coupens',
         icon: 'fal fa-tags',
         label: 'Coupens'
-    },
-    {
-        routeLink: 'pages',
-        icon: 'fal fa-file',
-        label: 'Pages'
-    },
-    {
-        routeLink: 'media',
-        icon: 'fal fa-camera',
-        label: 'Media'
-    },
-    {
-        routeLink: 'settings',
-        icon: 'fal fa-cog',
-        label: 'Settings'
     },
 ];
