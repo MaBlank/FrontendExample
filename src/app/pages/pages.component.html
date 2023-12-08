@@ -2,7 +2,7 @@
 
 <mat-form-field class="form-element">
   <mat-label>Modellauswahl</mat-label>
-  <mat-select>
+  <mat-select (selectionChange)="onModelSelected($event.value)">
     <mat-option *ngFor="let model of models" [value]="model.name">
       {{ model.name }}
     </mat-option>
@@ -22,8 +22,6 @@
 <div *ngIf="fileError" class="error-message">
   {{ fileError }}
 </div>
-
-
 
 <div class="row mt-5">
   <div class="col-12">

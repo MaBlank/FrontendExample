@@ -31,6 +31,12 @@ export class PagesComponent implements OnInit {
   models: ContactFormModel[] = [];
   fileError: string | null = null;
 
+  selectedModelApi?: string;
+
+  onModelSelected(modelName: string): void {
+    const selectedModel = this.models.find(model => model.name === modelName);
+    this.selectedModelApi = selectedModel ? selectedModel.api : '';
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -43,6 +49,9 @@ export class PagesComponent implements OnInit {
         console.error('Error fetching models:', error);
       }
     );
+    if (this.models.length > 0) {
+      this.selectedModelApi = this.models[0].api;
+    }
   }
   @ViewChild('annotateText') ngxAnnotateText?: NgxAnnotateTextComponent;
   id: string | null | undefined;
@@ -265,8 +274,8 @@ export class PagesComponent implements OnInit {
   }
 
   annotate() {
-    if (!this.mainObject || !this.mainObject.text) {
-      console.log('Kein Text zum Annotieren vorhanden');
+    if (!this.mainObject || !this.mainObject.text || !this.selectedModelApi) {
+      console.log('Kein Text oder keine API zum Annotieren vorhanden');
       return;
     }
 
@@ -274,12 +283,10 @@ export class PagesComponent implements OnInit {
       text: this.mainObject.text
     };
 
-    this.http.post<MainObject>('http://localhost:5000/annotate', requestBody).subscribe(
-      data => {
-        console.log('Antwort von der API erhalten:', data);
-
-        // Aktualisieren Sie das mainObject mit den Daten von der API
-        this.mainObject = data;
+    this.http.post<MainObject>(this.selectedModelApi, requestBody).subscribe(
+      (data: any) => {
+        if (data && typeof data === 'object') {
+          this.mainObject = data as MainObject;
 
         // Konvertieren Sie die Annotationen des Backend in das Format, das von ngxAnnotateText verwendet wird
         this.annotations = this.mainObject.annotations.annotations.map(backendAnnotation => new NgxAnnotation(
@@ -291,10 +298,13 @@ export class PagesComponent implements OnInit {
 
         // Aktualisieren Sie die Anzeige und den internen Zustand
         this.cd.detectChanges();
+        } else {
+          console.error('Unerwartetes Antwortformat:', data);
+        }
       },
-      error => {
-        console.error('Fehler beim Senden der Anfrage an die API:', error);
-      }
+        error => {
+          console.error('Fehler beim Senden der Anfrage an die API:', error);
+        }
     );
   }
 }

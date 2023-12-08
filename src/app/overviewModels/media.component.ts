@@ -83,15 +83,21 @@ export class MediaComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Hier könnten Sie die aktualisierten Daten an Ihren Service senden, um sie zu speichern
-        console.log('Updated data:', result);
-        // Und hier die Tabelle aktualisieren
-        this.dataSource.data = this.dataSource.data.map((item) => {
-          if (item.name === result.name) {
-            return result;
+        this.getModelsService.updateModel(result.name, result).subscribe(
+          response => {
+            console.log('Model updated successfully');
+            this.dataSource.data = this.dataSource.data.map((item) => {
+              if (item.name === result.name) {
+                return result;
+              }
+              return item;
+            });
+          },
+          error => {
+            console.error('Error updating model:', error);
+            this.openSnackBar('Fehler beim Aktualisieren des Modells', 'Schließen');
           }
-          return item;
-        });
+        );
       }
     });
   }

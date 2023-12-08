@@ -14,7 +14,9 @@ export class GetModelsService {
   getModels(): Observable<ContactFormModel[]> {
     return this.http.get<ContactFormModel[]>(`${this.apiUrl}/get_models`);
   }
-
+  updateModel(modelName: string, modelData: ContactFormModel): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update_model/${modelName}`, modelData);
+  }
   deleteModel(modelName: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete_model/${modelName}`);
   }
