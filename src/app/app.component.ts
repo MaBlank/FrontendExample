@@ -12,7 +12,7 @@ interface SideNavToggle {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Testanwendung';
+  title = 'NER-Verwaltung';
   constructor(private titleService: Title) {
     this.titleService.setTitle(this.title);
   }

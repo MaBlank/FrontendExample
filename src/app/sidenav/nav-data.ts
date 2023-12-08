@@ -19,19 +19,4 @@ export const navbarData = [
         icon: 'fa fa-signal',
         label: 'Bewertung'
     },
-    {
-        routeLink: 'products',
-        icon: 'fal fa-box-open',
-        label: 'Products'
-    },
-    {
-        routeLink: 'statistics',
-        icon: 'fal fa-chart-bar',
-        label: 'Statistics'
-    },
-    {
-        routeLink: 'coupens',
-        icon: 'fal fa-tags',
-        label: 'Coupens'
-    },
 ];

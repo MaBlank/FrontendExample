@@ -23,18 +23,7 @@ export interface ModelEvalStructure {
   f1score: number;
 }
 
-const ELEMENT_DATA: ModelEvalStructure[] = [
-  {name: 'Hydrogen', time: 1.0079, precision: 0.9, recall: 0.8, f1score: 0.85},
-  {name: 'Helium', time: 4.0026, precision: 0.92, recall: 0.85, f1score: 0.88},
-  {name: 'Lithium', time: 6.941, precision: 0.95, recall: 0.9, f1score: 0.92},
-  {name: 'Beryllium', time: 9.0122, precision: 0.93, recall: 0.88, f1score: 0.905},
-  {name: 'Boron', time: 10.811, precision: 0.91, recall: 0.86, f1score: 0.885},
-  {name: 'Carbon', time: 12.0107, precision: 0.96, recall: 0.93, f1score: 0.945},
-  {name: 'Nitrogen', time: 14.0067, precision: 0.94, recall: 0.9, f1score: 0.92},
-  {name: 'Oxygen', time: 15.9994, precision: 0.97, recall: 0.95, f1score: 0.96},
-  {name: 'Fluorine', time: 18.9984, precision: 0.89, recall: 0.87, f1score: 0.88},
-  {name: 'Neon', time: 20.1797, precision: 0.98, recall: 0.96, f1score: 0.97}
-];
+const ELEMENT_DATA: ModelEvalStructure[] = [];
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
