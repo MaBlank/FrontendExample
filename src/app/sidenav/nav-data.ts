@@ -19,4 +19,9 @@ export const navbarData = [
         icon: 'fa fa-signal',
         label: 'Bewertung'
     },
+    {
+        routeLink: 'coupens',
+        icon: 'fa fa-check-circle',
+        label: 'Eigenes GPT-Modell'
+    },
 ];

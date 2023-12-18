@@ -202,19 +202,16 @@ export class PagesComponent implements OnInit {
     console.log('onSave called');
     console.log(this.mainObject);  // Zeigt die Struktur des mainObject in der Konsole
 
-    // Überprüfen, ob mainObject existiert und Annotations hat
     if (this.mainObject && this.mainObject.annotations) {
       this.mainObject.annotations.annotations = this.annotations.map(annotation => {
         return { start: annotation.startIndex, end: annotation.endIndex, label: annotation.label, color: annotation.color };
       });
     }
 
-    // Erstellen der JSON-Datei zum Export
     const json = JSON.stringify(this.mainObject, null, 2); // Schön formatiertes JSON
     const blob = new Blob([json], { type: 'application/json' });
     const href = URL.createObjectURL(blob);
 
-    // Erstellen eines temporären 'a'-Elements zum Download der Datei
     const link = document.createElement('a');
     link.href = href;
     link.download = 'mainObject.json';
