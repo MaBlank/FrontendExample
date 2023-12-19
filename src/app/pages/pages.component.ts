@@ -32,10 +32,11 @@ export class PagesComponent implements OnInit {
   fileError: string | null = null;
 
   selectedModelApi?: string;
+  selectedModel?: any;
 
   onModelSelected(modelName: string): void {
-    const selectedModel = this.models.find(model => model.name === modelName);
-    this.selectedModelApi = selectedModel ? selectedModel.api : '';
+    this.selectedModel = this.models.find(model => model.name === modelName);
+    this.selectedModelApi = this.selectedModel ? this.selectedModel.api : '';
   }
 
   ngOnInit(): void {
@@ -199,9 +200,6 @@ export class PagesComponent implements OnInit {
   }
 
   onSave(): void {
-    console.log('onSave called');
-    console.log(this.mainObject);  // Zeigt die Struktur des mainObject in der Konsole
-
     if (this.mainObject && this.mainObject.annotations) {
       this.mainObject.annotations.annotations = this.annotations.map(annotation => {
         return { start: annotation.startIndex, end: annotation.endIndex, label: annotation.label, color: annotation.color };
@@ -217,8 +215,6 @@ export class PagesComponent implements OnInit {
     link.download = 'mainObject.json';
     document.body.appendChild(link);
     link.click();
-
-    // Aufräumen
     document.body.removeChild(link);
     URL.revokeObjectURL(href);
   }
@@ -276,10 +272,17 @@ export class PagesComponent implements OnInit {
       return;
     }
 
-    const requestBody = {
+    const requestBody: any = {
       text: this.mainObject.text
     };
 
+    if (this.selectedModel.label) {
+      requestBody.label = this.selectedModel.label;
+    }
+
+    if (this.selectedModel.examples) {
+      requestBody.examples = this.selectedModel.examples;
+    }
     this.http.post<MainObject>(this.selectedModelApi, requestBody).subscribe(
       (data: any) => {
         if (data && typeof data === 'object') {
