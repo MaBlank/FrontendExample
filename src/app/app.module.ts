@@ -26,6 +26,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {NgxAnnotateTextModule} from "ngx-annotate-text";
 import { ModelEditDialogComponent } from './model-edit-dialog/model-edit-dialog.component';
+import { SpacyComponent } from './spacy/spacy.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ModelEditDialogComponent } from './model-edit-dialog/model-edit-dialog.
     SidenavComponent,
     CouponsComponent,
     AddModelComponent,
-    ModelEditDialogComponent
+    ModelEditDialogComponent,
+    SpacyComponent
   ],
   imports: [
     BrowserModule,

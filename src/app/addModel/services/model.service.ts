@@ -15,4 +15,7 @@ export class ModelService {
   saveModelData(formData: ContactFormModel): Observable<any> {
     return this.http.post(this.apiUrl, formData);
   }
+  uploadModelData(formData: FormData) {
+    return this.http.post('http://localhost:5000/annotate_individual_spacy', formData);
+  }
 }

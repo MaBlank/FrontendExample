@@ -24,4 +24,9 @@ export const navbarData = [
         icon: 'fa fa-check-circle',
         label: 'Eigenes GPT-Modell'
     },
+    {
+        routeLink: 'spacy',
+        icon: 'fa fa-check-circle',
+        label: 'Eigenes Spacy-Modell'
+    },
 ];

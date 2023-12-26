@@ -201,22 +201,29 @@ export class PagesComponent implements OnInit {
 
   onSave(): void {
     if (this.mainObject && this.mainObject.annotations) {
-      this.mainObject.annotations.annotations = this.annotations.map(annotation => {
-        return { start: annotation.startIndex, end: annotation.endIndex, label: annotation.label, color: annotation.color };
+      const entities = this.annotations.map(annotation => {
+        return [annotation.startIndex, annotation.endIndex, annotation.label];
       });
+
+      const spacyFormattedObject = {
+        text: this.mainObject.text,
+        annotations: {
+          entities: entities
+        }
+      };
+
+      const json = JSON.stringify(spacyFormattedObject, null, 2); // Schön formatiertes JSON
+      const blob = new Blob([json], { type: 'application/json' });
+      const href = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = href;
+      link.download = 'spacyFormattedObject.json';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(href);
     }
-
-    const json = JSON.stringify(this.mainObject, null, 2); // Schön formatiertes JSON
-    const blob = new Blob([json], { type: 'application/json' });
-    const href = URL.createObjectURL(blob);
-
-    const link = document.createElement('a');
-    link.href = href;
-    link.download = 'mainObject.json';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
   }
   getUniqueAnnotationButtons(): void {
     const uniqueButtons = [];
@@ -273,7 +280,8 @@ export class PagesComponent implements OnInit {
     }
 
     const requestBody: any = {
-      text: this.mainObject.text
+      text: this.mainObject.text,
+      name : this.selectedModel.name
     };
 
     if (this.selectedModel.label) {

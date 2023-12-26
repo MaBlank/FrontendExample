@@ -1,5 +1,6 @@
 export interface MainObject {
   text: string;
+  name?: string;
   annotations: Annotations;
 }
 export interface Annotations {

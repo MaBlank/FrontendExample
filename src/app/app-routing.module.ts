@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MediaComponent } from './overviewModels/media.component';
 import { PagesComponent } from './pages/pages.component';
 import { AddModelComponent } from './addModel/addModel.component';
+import {SpacyComponent} from "./spacy/spacy.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'coupens', component: CouponsComponent},
   {path: 'pages', component: PagesComponent},
   {path: 'media', component: MediaComponent},
-  {path: 'settings', component: AddModelComponent}
+  {path: 'settings', component: AddModelComponent},
+  {path: 'spacy', component: SpacyComponent}
 ];
 
 @NgModule({
