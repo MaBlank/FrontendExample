@@ -14,8 +14,8 @@ import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss'],
+  templateUrl: './annotate.component.html',
+  styleUrls: ['./annotate.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -27,7 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatButtonModule
   ],
 })
-export class PagesComponent implements OnInit {
+export class AnnotateComponent implements OnInit {
   models: ContactFormModel[] = [];
   fileError: string | null = null;
 
@@ -296,7 +296,6 @@ export class PagesComponent implements OnInit {
         if (data && typeof data === 'object') {
           this.mainObject = data as MainObject;
 
-        // Konvertieren Sie die Annotationen des Backend in das Format, das von ngxAnnotateText verwendet wird
         this.annotations = this.mainObject.annotations.annotations.map(backendAnnotation => new NgxAnnotation(
           backendAnnotation.start,
           backendAnnotation.end,

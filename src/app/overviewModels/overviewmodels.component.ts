@@ -26,13 +26,13 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 };
 @Component({
   selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss'],
+  templateUrl: './overviewmodels.component.html',
+  styleUrls: ['./overviewmodels.component.scss'],
   providers: [{provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}],
   standalone: true,
   imports: [MatListModule, MatDividerModule, MatTableModule, MatPaginatorModule, MatTooltipModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBarModule, MatListModule, FormsModule, MatIconModule]
 })
-export class MediaComponent implements OnInit, AfterViewInit {
+export class OverviewmodelsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'description', 'model', 'delete'];
   dataSource = new MatTableDataSource<ContactFormModel>();
 

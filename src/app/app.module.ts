@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CouponsComponent } from './coupens/coupons.component';
-import { PagesComponent } from './pages/pages.component';
-import { MediaComponent } from './overviewModels/media.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { MakeGPT4Component } from './makeGPT4Modell/makeGPT4.component';
+import { AnnotateComponent } from './annotate/annotate.component';
+import { OverviewmodelsComponent } from './overviewModels/overviewmodels.component';
 import { AddModelComponent } from './addModel/addModel.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -27,27 +27,29 @@ import {MatButtonModule} from "@angular/material/button";
 import {NgxAnnotateTextModule} from "ngx-annotate-text";
 import { ModelEditDialogComponent } from './model-edit-dialog/model-edit-dialog.component';
 import { SpacyComponent } from './spacy/spacy.component';
+import { DictionaryComponent } from './dictionary/dictionary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyComponent,
     SidenavComponent,
-    CouponsComponent,
+    MakeGPT4Component,
     AddModelComponent,
     ModelEditDialogComponent,
-    SpacyComponent
+    SpacyComponent,
+    DictionaryComponent
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
-    DashboardComponent,
+    EvaluationComponent,
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    PagesComponent,
-    MediaComponent,
+    AnnotateComponent,
+    OverviewmodelsComponent,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,

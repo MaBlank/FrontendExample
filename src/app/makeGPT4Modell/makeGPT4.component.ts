@@ -5,10 +5,10 @@ import {ContactFormModel} from "../addModel/contact-form-model";
 
 @Component({
   selector: 'app-coupens',
-  templateUrl: './coupons.component.html',
-  styleUrls: ['./coupons.component.scss']
+  templateUrl: './makeGPT4.component.html',
+  styleUrls: ['./makeGPT4.component.scss']
 })
-export class CouponsComponent implements OnInit {
+export class MakeGPT4Component implements OnInit {
   showConfirmation = false;
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),

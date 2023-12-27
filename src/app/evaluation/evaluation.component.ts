@@ -26,12 +26,12 @@ export interface ModelEvalStructure {
 const ELEMENT_DATA: ModelEvalStructure[] = [];
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  templateUrl: './evaluation.component.html',
+  styleUrls: ['./evaluation.component.scss'],
   standalone: true,
   imports: [MatSliderModule, CommonModule, MatTableModule, MatButtonModule, MatProgressSpinnerModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatOptionModule, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule, MatTooltipModule, MatRadioModule, MatSortModule]
 })
-export class DashboardComponent implements OnInit {
+export class EvaluationComponent implements OnInit {
   displayedColumns: string[] = ['name', 'time', 'precision', 'recall', 'f1score'];
   dataSource = new MatTableDataSource<ModelEvalStructure>(ELEMENT_DATA);
   mainObject: MainObject = {

@@ -29,4 +29,9 @@ export const navbarData = [
         icon: 'fa fa-check-circle',
         label: 'Eigenes Spacy-Modell'
     },
+    {
+        routeLink: 'dictionary',
+        icon: 'fa fa-check-circle',
+        label: 'Eigenes Dictionary-Modell'
+    },
 ];
