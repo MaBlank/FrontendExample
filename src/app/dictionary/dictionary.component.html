@@ -1,0 +1,24 @@
+<h1>Erstellung eines Dictionary-NER-Modells</h1>
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; gap: 16px;">
+      <mat-form-field appearance="fill">
+        <mat-label>Name des Modells</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Beschreibung</mat-label>
+        <input matInput type="text" formControlName="description">
+      </mat-form-field>
+
+      <input type="file" (change)="onFileChange($event)">
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Hochladen und Speichern</button>
+
+      <div *ngIf="showConfirmation" class="confirmation-message">
+        Ihre Daten wurden erfolgreich gespeichert!
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
