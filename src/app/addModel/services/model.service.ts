@@ -14,7 +14,7 @@ export class ModelService {
     return this.http.post('http://localhost:5000/save_model', formData);
   }
   uploadModelData(formData: FormData) {
-    return this.http.post('http://localhost:5000/annotate_individual_spacy', formData);
+    return this.http.post('http://localhost:5000/save_individual_spacy', formData);
   }
   uploadDictionary(formData: FormData): Observable<any> {
     return this.http.post('http://localhost:5000/save_dictionary_model', formData);

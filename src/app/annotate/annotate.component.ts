@@ -57,7 +57,7 @@ export class AnnotateComponent implements OnInit {
   @ViewChild('annotateText') ngxAnnotateText?: NgxAnnotateTextComponent;
   id: string | null | undefined;
   mainObject: MainObject = {
-    text: 'Test Test Text Text Test Test',
+    text: 'Italien ist ein schönes Land, Matthias ist ein Name. Teste mal den Test Tester!',
     annotations: {
       annotations: []
     }

@@ -1,9 +1,5 @@
 export const navbarData = [
-    {
-        routeLink: 'settings',
-        icon: 'fa fa-cube',
-        label: 'Modell hinzufügen'
-    },
+
     {
         routeLink: 'media',
         icon: 'fa fa-table',
@@ -12,26 +8,31 @@ export const navbarData = [
     {
         routeLink: 'pages',
         icon: 'fa fa-pencil',
-        label: 'Annotationstest'
+        label: 'Annotation'
     },
     {
-        routeLink: 'dashboard',
-        icon: 'fa fa-signal',
-        label: 'Bewertung'
+        routeLink: 'settings',
+        icon: 'fa fa-plus-square',
+        label: 'Bestehendes Modell hinzufügen'
     },
     {
         routeLink: 'coupens',
-        icon: 'fa fa-check-circle',
-        label: 'Eigenes GPT-Modell'
+        icon: 'fa fa-plus-square',
+        label: 'Eigenes GPT-44-Modell'
     },
     {
         routeLink: 'spacy',
-        icon: 'fa fa-check-circle',
+        icon: 'fa fa-plus-square',
         label: 'Eigenes Spacy-Modell'
     },
     {
         routeLink: 'dictionary',
-        icon: 'fa fa-check-circle',
+        icon: 'fa fa-plus-square',
         label: 'Eigenes Dictionary-Modell'
+    },
+    {
+        routeLink: 'dashboard',
+        icon: 'fa fa-signal',
+        label: 'Evaluation'
     },
 ];
